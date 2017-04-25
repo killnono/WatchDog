@@ -1,13 +1,15 @@
 package com.example.killnono.watchdog.remote.apiservice;
 
 
-
 import com.example.killnono.watchdog.remote.XApiServiceHelper;
 
 import org.json.JSONObject;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by Android Studio
@@ -18,10 +20,11 @@ import retrofit2.http.GET;
  */
 public interface RoomApiService {
 
-    String CVS = "/config/cvs";
+    String CVS           = "/config/cvs";
+    String CURRENT_STATE = "currentState";
 
     /* test */
-    String BASE_URL = "http://10.8.8.8:9430";
+    String BASE_URL = "http://10.8.1.44:3000";
 //    String BASE_URL = "https://android-api-v4-0.yangcong345.com";
 
     class Factory {
@@ -42,5 +45,7 @@ public interface RoomApiService {
     @GET(CVS)
     Observable<JSONObject> cvs();
 
+    @POST(CURRENT_STATE)
+    Observable<JSONObject> postCurrentState(@Body JSONObject jsonObject);
 
 }

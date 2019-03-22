@@ -20,12 +20,12 @@ import retrofit2.http.Query;
  */
 public interface RoomApiService {
 
-    String CVS           = "/config/cvs";
+    String ROOM = "room";
+
     String CURRENT_STATE = "currentState";
 
     /* test */
-    String BASE_URL = "http://10.8.1.44:3000";
-//    String BASE_URL = "https://android-api-v4-0.yangcong345.com";
+    String BASE_URL = "http://116.62.144.229:12345";
 
     class Factory {
         private static RoomApiService sCourseApiService;
@@ -42,10 +42,11 @@ public interface RoomApiService {
         }
     }
 
-    @GET(CVS)
-    Observable<JSONObject> cvs();
 
     @POST(CURRENT_STATE)
     Observable<JSONObject> postCurrentState(@Body JSONObject jsonObject);
+
+    @GET(ROOM)
+    Observable<JSONObject> getSelf(@Query("roomId") String roomId );
 
 }

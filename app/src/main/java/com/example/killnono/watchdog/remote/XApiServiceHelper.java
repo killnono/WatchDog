@@ -28,7 +28,6 @@ import com.example.killnono.watchdog.remote.converter.json.XJsonConverterFactory
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -41,11 +40,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
  */
 public class XApiServiceHelper {
     public static   <T> T create(Class<T> c, String url) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)//日志拦截器
-//                .addNetworkInterceptor(new CommonInterceptor())//网络拦截器,进行重定向等操作
                 .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时
                 .build();
         Retrofit retrofit = new Retrofit.Builder()

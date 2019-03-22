@@ -29,7 +29,6 @@ package com.example.killnono.watchdog.remote.converter.json;
  * Version: 1.0
  */
 
-
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
